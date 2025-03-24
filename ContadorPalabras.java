@@ -1,36 +1,34 @@
+import java.util.List;
+
 public class ContadorPalabras {
 
-    public int contarPalabras(String palabras) {
+    public int contarPalabras(String frase) {
+        boolean enPalabra = false;
 
-        int contadorEspacios = 0;
-        int hayLetra = 0;
+        int contador = 0;
 
-        for (int i = 0; i < palabras.length(); i++) {
-            char letra = palabras.charAt(i);
-            if (letra == ' ') {
-                contadorEspacios++;
-            } else if (Character.isLetter(letra)) {
-                hayLetra++;
+        for (int i = 0; i < frase.length(); i++) {
+            char c = frase.charAt(i);
+
+            if (Character.isLetter(c)) {
+                if (!enPalabra) {
+                    contador++;
+                    enPalabra = true;
+                }
+            } else {
+                enPalabra = false;
             }
         }
-        contadorEspacios = contadorEspacios + 1;
-        if (hayLetra > 0) {
-            return contadorEspacios;
-        } else return -1;
+        return contador-1;
+
     }
 
 }
-    class Principal {
+class Principal {
 
-        public static void main(String[] args) {
-            String palabras = "123 2446";
-            ContadorPalabras contador = new ContadorPalabras();
-            int cantidadPalabras = contador.contarPalabras(palabras);
-            if(cantidadPalabras == -1){
-                System.out.println("No es válido (no hay caracteres alfabéticos)");
-            } else {System.out.println(cantidadPalabras);}
-        }
-
-
+    public static void main(String[] args) {
+        String palabras = "kjlaehfhujoaef aefioajeoifjioaefoiaonae oaenf1faiopf dwdwdw wcwdwd f 67git fnfffw efefe f f f";
+        ContadorPalabras contador = new ContadorPalabras();
+        System.out.println(contador.contarPalabras(palabras));
     }
-
+}
