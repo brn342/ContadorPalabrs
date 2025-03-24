@@ -1,21 +1,6 @@
-import java.util.List;
+# ContadorPalabrs
 
-public class ContadorPalabras {
-
-    public int[] contarVocales(String frase) {
-        int contadorConsonantes = 0;
-        int contadorVocales = 0;
-
-        for (int i = 0; i < frase.length(); i++) {
-            char letra = Character.toLowerCase(frase.charAt(i));
-            if (letra == 'a' || letra == 'e' || letra == 'i' || letra == 'o' || letra == 'u') {
-                contadorVocales++;
-            } else if (Character.isLetter(letra)){
-                contadorConsonantes++;
-            }
-        }
-        return new int[]{contadorVocales, contadorConsonantes};
-    }
+class ContadorPalabras {
 
     public int contarPalabras(String palabras) {
 
@@ -49,15 +34,25 @@ public class ContadorPalabras {
 
         return contadorPalabras;
     }
-
 }
-class Principal {
 
+
+public class Main {
     public static void main(String[] args) {
-        String palabras = "Hola!Mundo 123";
         ContadorPalabras contador = new ContadorPalabras();
 
-        System.out.println("Vocales en la frase: " + contador.contarVocales(palabras)[0] + ". Consonantes: " + contador.contarVocales(palabras)[1]);
-        System.out.println(contador.contarPalabras(palabras));
+        String ejemplo1 = "Hola mundo 123"; // Debe contar 2 palabras ("Hola", "mundo")
+        String ejemplo2 = "C# es genial! 42programadores"; // Debe contar 2 palabras ("es", "genial")
+        String ejemplo3 = "123 456 789"; // No debe contar ninguna palabra (0)
+        String ejemplo4 = "Hola.Mundo";
+
+
+        System.out.println("Ejemplo 1: " + contador.contarPalabras(ejemplo1));
+        System.out.println("Ejemplo 2: " + contador.contarPalabras(ejemplo2));
+        System.out.println("Ejemplo 3: " + contador.contarPalabras(ejemplo3));
+        System.out.println("Ejemplo 4: " + contador.contarPalabras(ejemplo4));
+
     }
 }
+
+
